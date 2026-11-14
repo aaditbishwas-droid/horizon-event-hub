@@ -65,7 +65,7 @@ export function SettingsDialog() {
 
   return (
     <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
-      <DialogContent className="max-h-[92vh] max-w-lg overflow-y-auto rounded-2xl">
+      <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-lg overflow-y-auto rounded-2xl">
         <DialogHeader>
           <DialogTitle>Settings</DialogTitle>
           <DialogDescription>Manage your profile, contact details and ticket.</DialogDescription>

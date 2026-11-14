@@ -149,6 +149,12 @@
   html.dark {
     color-scheme: dark;
   }
+  /* Desktop choice reads a touch larger on big screens. */
+  @media (min-width: 1280px) {
+    html[data-device="desktop"] {
+      font-size: 17px;
+    }
+  }
 
   body {
     background-color: var(--color-background);

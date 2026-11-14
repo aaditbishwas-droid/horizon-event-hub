@@ -3,6 +3,7 @@ import {
   CalendarClock,
   ChevronsUpDown,
   LayoutDashboard,
+  MonitorSmartphone,
   LifeBuoy,
   Mic2,
   Moon,
@@ -14,6 +15,7 @@ import {
 } from "lucide-react";
 
 import {
+  useSidebar,
   Sidebar,
   SidebarContent,
   SidebarFooter,
@@ -48,7 +50,8 @@ const NAV = [
 
 export function AppSidebar() {
   const pathname = useRouterState({ select: (r) => r.location.pathname });
-  const { profile, theme, toggleTheme, openSettings } = useAppState();
+  const { profile, theme, toggleTheme, openSettings, setDevicePickerOpen } = useAppState();
+  const { isMobile, setOpenMobile } = useSidebar();
   const ticketLabel = profile.ticket ? `${getTier(profile.ticket).name} ticket` : "Guest · no ticket";
 
   return (
@@ -77,7 +80,7 @@ export function AppSidebar() {
                     tooltip={item.title}
                     className="h-10 data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground data-[active=true]:font-semibold"
                   >
-                    <Link to={item.url}>
+                    <Link to={item.url} onClick={() => isMobile && setOpenMobile(false)}>
                       <item.icon className={active ? "text-sidebar-primary" : ""} />
                       <span>{item.title}</span>
                     </Link>
@@ -127,6 +130,9 @@ export function AppSidebar() {
                 </DropdownMenuItem>
                 <DropdownMenuItem onSelect={() => openSettings("profile")}>
                   <Settings /> Settings
+                </DropdownMenuItem>
+                <DropdownMenuItem onSelect={() => setDevicePickerOpen(true)}>
+                  <MonitorSmartphone /> Change device view
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>

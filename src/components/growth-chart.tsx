@@ -16,7 +16,7 @@ export function GrowthChart({ extra = 0 }: { extra?: number }) {
   const weekly = last - prev;
 
   return (
-    <section className="surface p-5 md:p-6">
+    <section className="surface p-5 @3xl:p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <span className="eyebrow">Momentum</span>

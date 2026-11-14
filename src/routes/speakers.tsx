@@ -44,7 +44,7 @@ function SpeakersPage() {
         <p className="mt-1 text-sm text-muted-foreground">{SPEAKERS.length} voices across four days.</p>
       </div>
 
-      <div className="surface flex flex-col gap-3 p-3 md:flex-row md:items-center">
+      <div className="surface flex flex-col gap-3 p-3 @3xl:flex-row @3xl:items-center">
         <div className="relative flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -57,14 +57,14 @@ function SpeakersPage() {
           />
         </div>
         <Select value={department} onValueChange={(v) => { setDepartment(v as Department | "all"); setPage(1); }}>
-          <SelectTrigger className="md:w-48" aria-label="Filter by department"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="@3xl:w-48" aria-label="Filter by department"><SelectValue /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All departments</SelectItem>
             {DEPARTMENTS.map((d) => <SelectItem key={d} value={d}>{d}</SelectItem>)}
           </SelectContent>
         </Select>
         <Select value={day} onValueChange={(v) => { setDay(v as DayId | "all"); setPage(1); }}>
-          <SelectTrigger className="md:w-44" aria-label="Filter by event date"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="@3xl:w-44" aria-label="Filter by event date"><SelectValue /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All dates</SelectItem>
             {EVENT_DAYS.map((d) => <SelectItem key={d.id} value={d.id}>{d.label}</SelectItem>)}
@@ -84,17 +84,17 @@ function SpeakersPage() {
       {items.length > 0 && (
         <ul className="surface divide-y overflow-hidden">
           {items.map((s) => (
-            <li key={s.id} className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1 px-4 py-3.5 transition-colors hover:bg-muted/40 md:grid-cols-[auto_minmax(0,1.1fr)_minmax(0,1.4fr)_7.5rem_5.5rem]">
-              <span className="row-span-2 grid size-10 place-items-center rounded-full bg-accent text-sm font-semibold text-primary md:row-span-1">
+            <li key={s.id} className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1 px-4 py-3.5 transition-colors hover:bg-muted/40 @3xl:grid-cols-[auto_minmax(0,1.1fr)_minmax(0,1.4fr)_7.5rem_5.5rem]">
+              <span className="row-span-2 grid size-10 place-items-center rounded-full bg-accent text-sm font-semibold text-primary @3xl:row-span-1">
                 {initials(s.name)}
               </span>
               <div className="min-w-0">
                 <div className="truncate font-medium">{s.name}</div>
                 <div className="truncate text-xs text-muted-foreground">{s.role}, {s.company}</div>
               </div>
-              <div className="col-start-2 truncate text-sm text-muted-foreground md:col-start-auto">“{s.talk}”</div>
-              <span className="hidden justify-self-start rounded-full bg-secondary px-2.5 py-1 text-xs font-medium md:inline">{s.department}</span>
-              <span className="hidden text-right text-xs text-muted-foreground md:block">
+              <div className="col-start-2 truncate text-sm text-muted-foreground @3xl:col-start-auto">“{s.talk}”</div>
+              <span className="hidden justify-self-start rounded-full bg-secondary px-2.5 py-1 text-xs font-medium @3xl:inline">{s.department}</span>
+              <span className="hidden text-right text-xs text-muted-foreground @3xl:block">
                 {dayLabel(s.day)}<br />{s.time}
               </span>
             </li>

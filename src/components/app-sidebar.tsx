@@ -70,8 +70,8 @@ export function AppSidebar() {
               {NAV.map((item) => {
                 const active = item.url === "/" ? pathname === "/" : pathname.startsWith(item.url);
                 return (
+                  <SidebarMenuItem key={item.url}>
                   <SidebarMenuButton
-                    key={item.url}
                     asChild
                     isActive={active}
                     tooltip={item.title}
@@ -82,6 +82,7 @@ export function AppSidebar() {
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
+                  </SidebarMenuItem>
                 );
               })}
             </SidebarMenu>

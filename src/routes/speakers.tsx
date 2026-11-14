@@ -84,7 +84,7 @@ function SpeakersPage() {
       {items.length > 0 && (
         <ul className="surface divide-y overflow-hidden">
           {items.map((s) => (
-            <li key={s.id} className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1 px-4 py-3.5 transition-colors hover:bg-muted/40 md:grid-cols-[auto_1.2fr_1.4fr_auto_auto]">
+            <li key={s.id} className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1 px-4 py-3.5 transition-colors hover:bg-muted/40 md:grid-cols-[auto_minmax(0,1.1fr)_minmax(0,1.4fr)_7.5rem_5.5rem]">
               <span className="row-span-2 grid size-10 place-items-center rounded-full bg-accent text-sm font-semibold text-primary md:row-span-1">
                 {initials(s.name)}
               </span>
@@ -93,7 +93,7 @@ function SpeakersPage() {
                 <div className="truncate text-xs text-muted-foreground">{s.role}, {s.company}</div>
               </div>
               <div className="col-start-2 truncate text-sm text-muted-foreground md:col-start-auto">“{s.talk}”</div>
-              <span className="hidden rounded-full bg-secondary px-2.5 py-1 text-xs font-medium md:inline">{s.department}</span>
+              <span className="hidden justify-self-start rounded-full bg-secondary px-2.5 py-1 text-xs font-medium md:inline">{s.department}</span>
               <span className="hidden text-right text-xs text-muted-foreground md:block">
                 {dayLabel(s.day)}<br />{s.time}
               </span>

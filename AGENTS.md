@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- App shell (sidebar, sticky header, footer, apply/settings dialogs) mounts once in `src/components/app-shell.tsx` via `__root.tsx`; pages only render their own content.
+- Shared client state (profile, ticket, theme, dialog open state) lives in `src/lib/app-state.tsx` context, persisted to localStorage — no backend yet.
+- Ticket prices, event details and form validation live in `src/lib/event.ts` / `src/lib/application.ts`, covered by `src/test/event-rules.test.ts`.

@@ -25,7 +25,7 @@ describe("ticket prices", () => {
     expect(getTier("vip").price).toBe(499);
   });
   it("student is prompted to upgrade to professional first", () => {
-    expect(upgradeOptions("student")[0].id).toBe("professional");
+    expect(upgradeOptions("student")[0]?.id).toBe("professional");
     expect(upgradeCost("student", "professional")).toBe(50);
   });
 });

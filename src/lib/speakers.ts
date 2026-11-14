@@ -62,18 +62,22 @@ const TALKS: Record<Department, string[]> = {
 };
 const TIMES = ["09:30", "10:30", "11:30", "13:30", "14:30", "15:30", "16:30"];
 
+function pick<T>(list: readonly T[], i: number): T {
+  return list[i % list.length] as T;
+}
+
 export const SPEAKERS: Speaker[] = Array.from({ length: 80 }, (_, i) => {
-  const department = DEPARTMENTS[i % DEPARTMENTS.length];
+  const department = pick(DEPARTMENTS, i);
   const variant = Math.floor(i / DEPARTMENTS.length) % 3;
   return {
     id: i + 1,
-    name: `${FIRST[i % FIRST.length]} ${LAST[(i * 7 + 3) % LAST.length]}`,
-    role: ROLES[department][variant],
-    company: COMPANIES[(i * 3) % COMPANIES.length],
+    name: `${pick(FIRST, i)} ${pick(LAST, i * 7 + 3)}`,
+    role: pick(ROLES[department], variant),
+    company: pick(COMPANIES, i * 3),
     department,
-    day: EVENT_DAYS[(i * 3 + Math.floor(i / 8)) % EVENT_DAYS.length].id,
-    time: TIMES[(i * 5) % TIMES.length],
-    talk: TALKS[department][variant],
+    day: pick(EVENT_DAYS, i * 3 + Math.floor(i / 8)).id,
+    time: pick(TIMES, i * 5),
+    talk: pick(TALKS[department], variant),
   };
 });
 

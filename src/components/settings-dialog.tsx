@@ -36,8 +36,14 @@ export function SettingsDialog() {
 
   const onPhoto = (file: File | undefined) => {
     if (!file) return;
-    if (!file.type.startsWith("image/")) return toast.error("Please choose an image file.");
-    if (file.size > MAX_PHOTO_BYTES) return toast.error("Photo must be under 2 MB.");
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please choose an image file.");
+      return;
+    }
+    if (file.size > MAX_PHOTO_BYTES) {
+      toast.error("Photo must be under 2 MB.");
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       updateProfile({ avatar: String(reader.result) });

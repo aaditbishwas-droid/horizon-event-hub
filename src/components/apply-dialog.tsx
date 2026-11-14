@@ -248,7 +248,7 @@ export function ApplyDialog() {
   );
 }
 
-function Field({ label, error, className, children }: { label: string; error?: string; className?: string; children: React.ReactNode }) {
+function Field({ label, error, className, children }: { label: string; error?: string | undefined; className?: string; children: React.ReactNode }) {
   return (
     <div className={cn("space-y-1.5", className)}>
       <Label className="text-xs font-medium">{label}</Label>

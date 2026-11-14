@@ -1,7 +1,7 @@
 export const EVENT = {
   name: "Horizon Retreat",
   tagline: "Connecting professionals from various industries",
-  dates: "Dec 2 – 5, 2026",
+  dates: "Dec 2 – 4, 2026",
   city: "Paris",
   capacity: 1500,
   appliedBase: 1248,
@@ -12,7 +12,6 @@ export const EVENT_DAYS = [
   { id: "2026-12-02", label: "Wed, Dec 2", short: "Dec 2" },
   { id: "2026-12-03", label: "Thu, Dec 3", short: "Dec 3" },
   { id: "2026-12-04", label: "Fri, Dec 4", short: "Dec 4" },
-  { id: "2026-12-05", label: "Sat, Dec 5", short: "Dec 5" },
 ] as const;
 
 export type DayId = (typeof EVENT_DAYS)[number]["id"];

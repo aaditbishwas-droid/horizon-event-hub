@@ -75,7 +75,7 @@ export function ApplyDialog() {
 
   return (
     <Dialog open={applyOpen} onOpenChange={setApplyOpen}>
-      <DialogContent className="max-h-[92vh] max-w-2xl gap-0 overflow-y-auto rounded-2xl p-0">
+      <DialogContent className="max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-2xl gap-0 overflow-y-auto rounded-2xl p-0">
         {done && selectedTier ? (
           <div className="flex flex-col items-center gap-4 px-8 py-14 text-center">
             <div className="grid size-14 place-items-center rounded-full bg-brand-soft text-brand">

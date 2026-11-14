@@ -38,10 +38,10 @@ function Overview() {
 
   return (
     <div className="space-y-8">
-      <section className="surface grid overflow-hidden md:grid-cols-[1.1fr_1fr]">
-        <div className="flex flex-col justify-center gap-5 p-7 md:p-10">
+      <section className="surface grid overflow-hidden @3xl:grid-cols-[1.1fr_1fr]">
+        <div className="flex flex-col justify-center gap-5 p-7 @3xl:p-10">
           <span className="eyebrow">{EVENT.dates} · {EVENT.city}</span>
-          <h1 className="text-3xl font-semibold leading-[1.1] md:text-[2.6rem]">
+          <h1 className="text-3xl font-semibold leading-[1.1] @3xl:text-[2.6rem]">
             Connecting professionals from various industries.
           </h1>
           <p className="max-w-md text-muted-foreground">
@@ -62,7 +62,7 @@ function Overview() {
             </Button>
           </div>
         </div>
-        <div className="relative min-h-64 md:min-h-full">
+        <div className="relative min-h-64 @3xl:min-h-full">
           <img
             src={heroImage}
             alt="Professionals connected across a glowing network beneath a rising sun"
@@ -73,7 +73,7 @@ function Overview() {
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-3">
+      <section className="grid gap-4 @xl:grid-cols-3">
         {kpis.map((k) => (
           <div key={k.label} className="surface p-5">
             <div className="flex items-center justify-between">
@@ -98,7 +98,7 @@ function Overview() {
             <h2 className="mt-1 text-xl font-semibold">Pick the seat that fits</h2>
           </div>
         </div>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 @3xl:grid-cols-3">
           {TIERS.map((t) => {
             const featured = t.id === "professional";
             const owned = profile.ticket === t.id;

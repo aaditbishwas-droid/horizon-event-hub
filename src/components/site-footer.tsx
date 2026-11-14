@@ -5,7 +5,7 @@ import { CONTACT, EVENT } from "@/lib/event";
 export function SiteFooter() {
   return (
     <footer className="mt-16 border-t">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:grid-cols-2 md:px-8 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 @xl:grid-cols-2 @3xl:px-8 @5xl:grid-cols-4">
         <div className="space-y-2">
           <div className="font-display text-sm font-semibold">{EVENT.name}</div>
           <p className="text-sm text-muted-foreground">
@@ -45,7 +45,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t">
-        <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4 text-xs text-muted-foreground sm:flex-row sm:justify-between md:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4 text-xs text-muted-foreground @xl:flex-row @xl:justify-between @3xl:px-8">
           <span>© 2026 {EVENT.name}. All rights reserved.</span>
           <span>Support replies within one business day.</span>
         </div>

@@ -52,10 +52,13 @@ const SidebarProvider = React.forwardRef<
     defaultOpen?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
+    /** Treat the sidebar as mobile (slide-out sheet) regardless of screen width. */
+    forceMobile?: boolean;
   }
 >(
   (
     {
+      forceMobile = false,
       defaultOpen = true,
       open: openProp,
       onOpenChange: setOpenProp,
@@ -66,7 +69,7 @@ const SidebarProvider = React.forwardRef<
     },
     ref,
   ) => {
-    const isMobile = useIsMobile();
+    const isMobile = useIsMobile() || forceMobile;
     const [openMobile, setOpenMobile] = React.useState(false);
 
     // This is the internal state of the sidebar.

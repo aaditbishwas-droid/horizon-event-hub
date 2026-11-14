@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getTier, upgradeCost, upgradeOptions } from "@/lib/event";
+import { PREVIOUS_PERKS, getTier, upgradeCost, upgradeOptions } from "@/lib/event";
 import { validateApplication, type ApplicationInput } from "@/lib/application";
 import { SPEAKERS, filterSpeakers, paginate } from "@/lib/speakers";
 
@@ -55,5 +55,18 @@ describe("speakers", () => {
   it("filters by department and date together", () => {
     const res = filterSpeakers(SPEAKERS, { query: "", department: "Design", day: "2026-12-03" });
     expect(res.every((s) => s.department === "Design" && s.day === "2026-12-03")).toBe(true);
+  });
+});
+
+describe("ticket perks", () => {
+  it("student perks do not reference previous perks", () => {
+    expect(getTier("student").perks).not.toContain(PREVIOUS_PERKS);
+  });
+  it("professional and VIP perks start with 'Previous perks included!'", () => {
+    expect(getTier("professional").perks[0]).toBe("Previous perks included!");
+    expect(getTier("vip").perks[0]).toBe("Previous perks included!");
+  });
+  it("VIP includes an on-site dinner", () => {
+    expect(getTier("vip").perks.some((p) => /on-site dinner/i.test(p))).toBe(true);
   });
 });

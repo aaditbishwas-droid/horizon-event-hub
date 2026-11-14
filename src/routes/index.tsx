@@ -7,6 +7,8 @@ import { Progress } from "@/components/ui/progress";
 import { useAppState } from "@/lib/app-state";
 import { EVENT, TIERS } from "@/lib/event";
 import { cn } from "@/lib/utils";
+import { GrowthChart } from "@/components/growth-chart";
+import { PerkList } from "@/components/perk-list";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -87,6 +89,8 @@ function Overview() {
         ))}
       </section>
 
+      <GrowthChart extra={profile.ticket ? 1 : 0} />
+
       <section className="space-y-4">
         <div className="flex items-end justify-between">
           <div>
@@ -115,13 +119,7 @@ function Overview() {
                 </div>
                 <div className="mt-3 font-display text-3xl font-semibold">${t.price}</div>
                 <p className="mt-1 text-sm text-muted-foreground">{t.blurb}</p>
-                <ul className="mt-4 flex-1 space-y-1.5 text-sm">
-                  {t.perks.map((p) => (
-                    <li key={p} className="flex gap-2">
-                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-brand" /> {p}
-                    </li>
-                  ))}
-                </ul>
+                <PerkList perks={t.perks} className="mt-4 flex-1" />
                 <Button
                   className="mt-5"
                   variant={featured ? "default" : "outline"}

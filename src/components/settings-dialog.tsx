@@ -13,6 +13,7 @@ import { contactSchema } from "@/lib/application";
 import { getTier, upgradeCost, upgradeOptions } from "@/lib/event";
 import { initials } from "@/lib/speakers";
 import { cn } from "@/lib/utils";
+import { PerkList } from "@/components/perk-list";
 
 const MAX_PHOTO_BYTES = 2 * 1024 * 1024;
 
@@ -162,9 +163,7 @@ export function SettingsDialog() {
                             </div>
                           )}
                           <div className="font-semibold">{t.name} · ${t.price}</div>
-                          <ul className="mt-1 space-y-0.5 text-xs text-muted-foreground">
-                            {t.perks.map((p) => <li key={p}>• {p}</li>)}
-                          </ul>
+                          <PerkList perks={t.perks} compact className="mt-2" />
                         </div>
                         <Button size="sm" variant={i === 0 ? "cta" : "outline"}
                           onClick={() => {

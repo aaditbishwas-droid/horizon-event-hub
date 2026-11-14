@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAppState } from "@/lib/app-state";
+import { PerkList } from "@/components/perk-list";
 import { EVENT, TIERS, getTier, type TierId } from "@/lib/event";
 import { validateApplication, type ApplicationInput } from "@/lib/application";
 import { cn } from "@/lib/utils";
@@ -110,7 +111,7 @@ export function ApplyDialog() {
                         aria-checked={active}
                         onClick={() => set("tier", t.id)}
                         className={cn(
-                          "relative flex cursor-pointer flex-col items-start gap-1 rounded-xl border p-4 text-left transition-all",
+                          "relative flex cursor-pointer flex-col items-stretch gap-1 rounded-xl border p-4 text-left transition-all",
                           active ? "border-primary bg-accent ring-1 ring-primary" : "hover:border-ring/50",
                         )}
                       >
@@ -119,14 +120,15 @@ export function ApplyDialog() {
                             Limited
                           </span>
                         )}
-                        <span className="text-sm font-semibold">{t.name}</span>
+                        <span className="flex items-center gap-1.5 text-sm font-semibold">
+                          {t.name}
+                          {active && <Check className="size-4 text-primary" aria-hidden />}
+                        </span>
                         <span className="font-display text-2xl font-semibold">${t.price}</span>
                         <span className="text-xs text-muted-foreground">
                           {t.limited ? `Only ${t.seatsLeft} left` : t.blurb}
                         </span>
-                        {active && (
-                          <Check className="absolute bottom-3 right-3 size-4 text-primary" aria-hidden />
-                        )}
+                        <PerkList perks={t.perks} compact className="mt-2 border-t pt-3" />
                       </button>
                     );
                   })}

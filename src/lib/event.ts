@@ -36,27 +36,49 @@ export type Tier = {
   seatsLeft?: number;
 };
 
+/** Shown first on every tier above Student. */
+export const PREVIOUS_PERKS = "Previous perks included!";
+
 export const TIERS: Tier[] = [
   {
     id: "student",
     name: "Student",
     price: 59,
     blurb: "Full access for enrolled students.",
-    perks: ["All talks & workshops", "Lunch on all days", "Student networking lounge"],
+    perks: [
+      "Access to all keynotes & talks",
+      "Open workshop entry",
+      "Daily lunch & coffee",
+      "Student networking lounge",
+      "Digital event pass",
+    ],
   },
   {
     id: "professional",
     name: "Professional",
     price: 109,
     blurb: "The complete retreat experience.",
-    perks: ["Everything in Student", "Session recordings", "Evening networking dinner"],
+    perks: [
+      PREVIOUS_PERKS,
+      "Reserved workshop seats",
+      "Full session recordings",
+      "Evening networking mixer",
+      "Welcome kit & certificate",
+    ],
   },
   {
     id: "vip",
     name: "VIP",
     price: 499,
     blurb: "Front row, backstage and beyond.",
-    perks: ["Everything in Professional", "Speaker meet & greet", "Reserved front-row seating"],
+    perks: [
+      PREVIOUS_PERKS,
+      "Private on-site dinner with speakers",
+      "Reserved front-row seating",
+      "Backstage speaker meet & greet",
+      "VIP lounge with concierge",
+      "Priority check-in",
+    ],
     limited: true,
     seatsLeft: 12,
   },
@@ -75,3 +97,21 @@ export function upgradeOptions(current: TierId): Tier[] {
 export function upgradeCost(from: TierId, to: TierId): number {
   return Math.max(0, getTier(to).price - getTier(from).price);
 }
+
+/** Weekly cumulative applications leading up to today. */
+export const APPLICATION_GROWTH = [
+  { week: "Aug 15", applied: 64 },
+  { week: "Aug 22", applied: 131 },
+  { week: "Aug 29", applied: 188 },
+  { week: "Sep 5", applied: 262 },
+  { week: "Sep 12", applied: 340 },
+  { week: "Sep 19", applied: 418 },
+  { week: "Sep 26", applied: 503 },
+  { week: "Oct 3", applied: 596 },
+  { week: "Oct 10", applied: 684 },
+  { week: "Oct 17", applied: 779 },
+  { week: "Oct 24", applied: 871 },
+  { week: "Oct 31", applied: 968 },
+  { week: "Nov 7", applied: 1092 },
+  { week: "Nov 14", applied: 1248 },
+];

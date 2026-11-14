@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAppState } from "@/lib/app-state";
-import { TIERS, getTier, type TierId } from "@/lib/event";
+import { EVENT, TIERS, getTier, type TierId } from "@/lib/event";
 import { validateApplication, type ApplicationInput } from "@/lib/application";
 import { cn } from "@/lib/utils";
 
@@ -224,7 +224,7 @@ export function ApplyDialog() {
                       onClick={(e) => e.stopPropagation()}>
                       Code of Conduct
                     </Link>{" "}
-                    for {""}Horizon Retreat.
+                    for {EVENT.name}.
                   </span>
                 </label>
                 {err("agreeToConduct") && <p className="mt-1.5 text-xs text-destructive">{errors.agreeToConduct}</p>}

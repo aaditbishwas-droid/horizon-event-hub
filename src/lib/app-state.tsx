@@ -114,7 +114,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
   const setDevice = useCallback((next: DeviceMode) => {
     setDeviceState(next);
-    document.documentElement.dataset.device = next;
+    document.documentElement.dataset["device"] = next;
     try {
       localStorage.setItem(DEVICE_KEY, next);
     } catch {
